@@ -1,0 +1,81 @@
+﻿/* Hero section */
+.hero-contact {
+    text-align: center;
+    background: url('images/lab3.jpeg') no-repeat center center;
+    width: 90%;
+    height: 250px;
+    padding: 50px 30px;
+    color: white; /* Ensures text is readable */
+}
+
+.hero-content h1 {
+    font-size: 38px;
+    color: #ffffff; /* Changed to white for better contrast */
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Adds slight text shadow */
+}
+
+
+
+/* Lab Report Form Section */
+.lab-report-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    padding: 50px 20px;
+    background-color:ghostwhite;
+}
+
+.form-container {
+    background-color:darkturquoise;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+    .form-container h2 {
+        margin-bottom: 20px;
+        font-size: 22px;
+        color: #1d8c8a;
+    }
+
+/* Form Styling */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+    .input-group label {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #2ca6a4;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+    }
+
+.submit-button {
+    background-color:white;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+    .submit-button:hover {
+        background-color: #157c78;
+    }
+

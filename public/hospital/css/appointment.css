@@ -1,0 +1,72 @@
+﻿/*Hero section*/
+.hero-contact {
+    text-align: center;
+    background: #f3f6fb;
+    padding: 40px 20px;
+}
+
+.hero-content h1 {
+    font-size: 38px;
+    color: #002147;
+    margin-bottom: 10px;
+}
+
+
+/* Appointment form container */
+.appointment-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Form group */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+    .form-group ion-icon {
+        font-size: 20px;
+        margin-right: 10px;
+        color: #333;
+    }
+
+/* Input fields */
+input, select {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+}
+
+/* Search button */
+.search-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .search-button:hover {
+        background: #218838;
+    }
+
+/* Time Picker - Initially hidden */
+#time-picker-group {
+    display: none;
+}

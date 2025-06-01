@@ -1,0 +1,117 @@
+﻿/*Hero section*/
+.hero-contact {
+    text-align: center;
+    background: #f3f6fb;
+    padding: 40px 20px;
+}
+
+.hero-content h1 {
+    font-size: 38px;
+    color: #002147;
+    margin-bottom: 10px;
+}
+
+
+/*Doctor Page Styles*/
+
+/* Container for the doctor channeling page */
+.image-section {
+    background: url('../images/service2.jpg') center no-repeat;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+
+/* Search Container */
+.search-container {
+    margin-bottom: 20px;
+}
+
+    .search-container label {
+        font-size: 14px;
+        margin-right: 10px;
+    }
+
+    .search-container input[type="text"] {
+        padding: 6px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+/* Table Styles */
+#doctorTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+    #doctorTable thead {
+        background-color: #f2f2f2;
+    }
+
+    #doctorTable th,
+    #doctorTable td {
+        text-align: left;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* Highlight table rows on hover */
+    #doctorTable tbody tr:hover {
+        background-color: #f9f9f9;
+    }
+
+/* Pagination Container */
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+    .pagination-container button {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+        .pagination-container button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+.pageBtn {
+    background-color: #007BFF;
+    margin: 0 3px;
+}
+
+    .pageBtn:hover:not(:disabled) {
+        background-color: #0056b3;
+    }
+
+/* Hero Section (optional styling) */
+.hero-section {
+    background: #005eb8;
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 20px;
+}
+
+    .hero-section h1 {
+        font-size: 32px;
+        margin: 0;
+    }
+  
