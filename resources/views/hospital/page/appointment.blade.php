@@ -10,24 +10,26 @@
 
     <!-- Appointment form section -->
     <div class="appointment-container">
-        
-        <form action="#" method="POST">
+
+        <form action="create-appointment" method="POST">
+            @csrf
 
             <div class="form-group">
                 <ion-icon name="person-outline"></ion-icon>
-                <select id="doctor-select">
+                <select id="doctor-select" name="doctor_id">
                     <option value="" disabled selected>Select a Doctor</option>
-                    <option value="dr-athula warnasinghe">DR. ATHULA WARANASINGHE</option>
-                    <option value="dr-jane-smith">Dr. Jane Smith</option>
-                    <option value="dr-michael-lee">Dr. Michael Lee</option>
-                    <option value="dr-emily-davis">Dr. Emily Davis</option>
-                    <option value="dr-chandra weerasinghe">DR. CHANDRA WEERASINGHE</option>
+                    @if (!$doctors || $doctors->isEmpty())
+                        <option value="" disabled>No doctors available</option>
+                    @endif
+                    @foreach ($doctors as $doctor)
+                        <option value="{{ $doctor->id }}">{{ $doctor->first_name }} {{ $doctor->last_name }}</option>
+                    @endforeach
 
                 </select>
                 <ion-icon name="help-circle-outline" class="help-icon"></ion-icon>
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <ion-icon name="medkit-outline"></ion-icon>
                 <select>
                     <option selected disabled>Any Specialization</option>
@@ -36,31 +38,32 @@
                     <option>Dermatology</option>
                     <option>Orthopedics</option>
                 </select>
-            </div>
+            </div> --}}
 
             <div class="form-group">
                 <ion-icon name="business-outline"></ion-icon>
-                <select>
-                    <option selected disabled>Any Hospital</option>
-                    <option>Care Compass Colombo</option>
-                    <option>Care Compass Kandy</option>
-                    <option>Care Compass Kurunegala</option>
+                <select id="location" name="location">
+                    <option selected disabled>Select Hospital</option>
+                    <option value="colombo">Care Compass Colombo</option>
+                    <option value="kandy">Care Compass Kandy</option>
+                    <option value="kurunegala">Care Compass Kurunegala</option>
                 </select>
             </div>
 
             <!-- Date Picker -->
             <div class="form-group">
                 <ion-icon name="calendar-outline"></ion-icon>
-                <input type="date" id="appointment-date" required>
+                <input type="date" id="appointment-date" name="date" required>
+
             </div>
 
             <!-- Time Picker (Visible after selecting a date) -->
             <div class="form-group" id="time-picker-group" style="display: none;">
                 <ion-icon name="time-outline"></ion-icon>
-                <input type="time" id="appointment-time" required>
+                <input type="time" id="appointment-time" name="time" required>
             </div>
 
-            <button type="button" class="search-button" onclick="window.location">Search</button>
+            <button type="submit" id="appointment-date" class="search-button">Sumbit</button>
 
         </form>
     </div>

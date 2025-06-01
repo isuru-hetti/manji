@@ -28,6 +28,17 @@ class User extends Authenticatable
         'password',
     ];
 
+    // relationships with doctor
+    public function doctor()
+    {
+        return $this->hasOne(Doctor::class);
+    }
+    // relationships with doctorshedule
+    public function doctorSchedule()
+    {
+        return $this->hasMany(DoctorSchedule::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

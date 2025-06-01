@@ -27,45 +27,32 @@
                 <th>Name</th>
                 <th>Specialty</th>
                 <th>date</th>
-                <th>time</th>
+                <th>From time</th>
+                <th>To time</th>
             </tr>
         </thead>
         <tbody>
             <!-- Rows of doctors (static or dynamically generated) -->
+            @foreach ($doctors as $doctor)
+
             <tr>
-                <td>DS175</td>
-                <td>DR. ATHULA WARANASINGHE</td>
-                <td>Cardiology</td>
-                <td>2025/3/14</td>
-                <td>10.00 am</td>
+                <td>D{{$doctor->id}}</td>
+                <td>{{$doctor->first_name}} {{$doctor->last_name}}</td>
+                <td>{{$doctor->specialization}}</td>
+                <td>{{$doctor->date}}</td>
+                <td>{{$doctor->start_time}}</td>
+                <td>{{$doctor->end_time}}</td>
             </tr>
+            @endforeach
+
             <tr>
-                <td>DY129</td>
-                <td>Dr. Jane Smith</td>
-                <td>Neurology</td>
-                <td>2025/3/20</td>
-                <td>1.00 pm</td>
-            </tr>
-            <tr>
-                <td>D0666</td>
-                <td>Dr. Michael Lee</td>
-                <td>Dermatology</td>
-                <td>2025/3/22</td>
-                <td>5.30 pm</td>
-            </tr>
-            <tr>
-                <td>D7777</td>
-                <td>Dr. Emily Davis</td>
-                <td>Orthopedics</td>
-                <td>2025/3/27</td>
-                <td>6.30 am</td>
-            </tr>
-            <tr>
-                <td>D2013</td>
-                <td>DR. CHANDRA WEERASINGHE</td>
+                <td>D000</td>
+                <td>Dr. Chandana Seneviratne</td>
                 <td>Neurology</td>
                 <td>2025/3/16</td>
                 <td>3.00 pm</td>
+                <td>10.00 am</td>
+
             </tr>
             <!-- Add as many rows as needed for demonstration -->
         </tbody>

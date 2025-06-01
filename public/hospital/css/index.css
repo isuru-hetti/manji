@@ -58,7 +58,8 @@ body {
 
                 /* Hover effect */
                 .top-bar ul li a:hover {
-                    background-color:dodgerblue;
+                    
+                    border-color: rgb(255, 255, 255);
                     color: #333;
                 }
 
@@ -433,7 +434,7 @@ nav ul {
         background-color: #caf0f8;
     }
 
-    
+
 /* Family Health Hub Section */
 .family-health-hub {
     text-align: center;
@@ -630,7 +631,7 @@ nav ul {
 .footer-box {
     width: 30%;
     min-width: 250px;
-    
+
 }
 
 .footer-logo {

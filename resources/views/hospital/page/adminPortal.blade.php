@@ -6,6 +6,16 @@
   Add New Doctor
 </button>
 
+{{-- add doctor timetable --}}
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#doctorTimeModal">
+  Add New Time and Date for Doctor
+</button>
+
+{{-- update doctor profile --}}
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateDoctorModal">
+  Update Doctor Profile
+</button>
+
 
 
 
@@ -15,7 +25,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Create New Doctor</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="create-doctor" method="POST">
@@ -38,4 +48,93 @@
     </div>
   </div>
 </div>
+
+{{-- add doctor timetable --}}
+
+<div class="modal fade" id="doctorTimeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Time and Date for Doctor</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="doctor-schedule-create" method="POST">
+      @csrf
+      <div class="modal-body">
+
+                    <select class="form-group" name="name" required>
+                    <option selected disabled>Select Doctor</option>
+                    @if (!$doctors || $doctors->isEmpty())
+                        <option value="" disabled>No doctors available</option>
+
+                    @endif
+
+                    @foreach ($doctors as $doctor)
+                        <option value="{{ $doctor->id }}">{{ $doctor->first_name }} {{ $doctor->last_name }}</option>
+                    @endforeach
+
+                </select>
+
+                    <select id="location" name="location" class="form-group">
+                    <option selected disabled>Select Hospital</option>
+                    <option value="colombo">Care Compass Colombo</option>
+                    <option value="kandy">Care Compass Kandy</option>
+                    <option value="kurunegala">Care Compass Kurunegala</option>
+                </select>
+                    <input class="form-group" type="date" name="date" placeholder="Enter Date" required>
+                    <input class="form-group" type="time" name="start_time" placeholder="Enter Out Time" required>
+                    <input class="form-group" type="time" name="end_time" placeholder="Enter Out Time" required>
+
+                </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{{-- update doctor profile --}}
+<div class="modal fade" id="updateDoctorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Time and Date for Doctor</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="update-doctor" method="POST">
+      @csrf
+      <div class="modal-body">
+
+        <select class="form-group" name="name" required>
+                    <option selected disabled>Select Doctor</option>
+                    @if (!$doctors || $doctors->isEmpty())
+                        <option value="" disabled>No doctors available</option>
+
+                    @endif
+
+                    @foreach ($doctors as $doctor)
+                        <option value="{{ $doctor->id }}">{{ $doctor->first_name }} {{ $doctor->last_name }}</option>
+                    @endforeach
+
+
+                </select>
+                    <input class="form-group" type="text" name="specialization" placeholder="Enter specialization" required>
+                    <input class="form-group" type="text" name="description" placeholder="description" required>
+
+
+                </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 @endsection
