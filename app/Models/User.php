@@ -36,7 +36,7 @@ class User extends Authenticatable
     // relationships with doctorshedule
     public function doctorSchedule()
     {
-        return $this->hasMany(DoctorSchedule::class);
+        return $this->hasMany(DoctorSchedule::class, 'user_id');
     }
 
     /**

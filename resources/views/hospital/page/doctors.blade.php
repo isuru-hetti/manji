@@ -4,7 +4,7 @@
  <!--Hero section-->
     <section class="hero-contact">
         <div class="hero-content">
-            <h1>Doctor Profiles</h1>
+            <h1>Doctors Availability</h1>
         </div>
     </section>
 
@@ -26,6 +26,7 @@
                 <th>Doctor ID</th>
                 <th>Name</th>
                 <th>Specialty</th>
+                <th>Location</th>
                 <th>date</th>
                 <th>From time</th>
                 <th>To time</th>
@@ -36,9 +37,10 @@
             @foreach ($doctors as $doctor)
 
             <tr>
-                <td>D{{$doctor->id}}</td>
+                <td>D{{$doctor->doctor_id}}</td>
                 <td>{{$doctor->first_name}} {{$doctor->last_name}}</td>
                 <td>{{$doctor->specialization}}</td>
+                <td>{{$doctor->location}}</td>
                 <td>{{$doctor->date}}</td>
                 <td>{{$doctor->start_time}}</td>
                 <td>{{$doctor->end_time}}</td>

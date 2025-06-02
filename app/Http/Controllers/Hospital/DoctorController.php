@@ -9,15 +9,34 @@ use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Validation\ValidationException;
 use App\Models\Doctor;
+use App\Models\DoctorSchedule;
+use App\Models\Appointment;
+use Illuminate\Support\Facades\DB;
 
 class DoctorController extends Controller
 {
     //
     public function index()
     {
-//   $doctors = User::where('role', 'doctor')->get();
-//   return view('hospital.page.adminPortal', compact('doctors'));
-        // return view('hospital.page.doctors');
+        $authId = Auth::id(); // get  logged-in user id
+
+    $patients = DB::table('appointments')
+        ->join('users', 'appointments.user_id', '=', 'users.id')
+        ->where('appointments.doctor_id', $authId)
+        ->select(
+            'appointments.id as appointment_id',
+            'appointments.user_id',
+            'appointments.location as location',
+            'appointments.date as date',
+            'appointments.time as time',
+            'appointments.status as status',
+            'users.first_name as first_name',
+            'users.last_name as last_name'
+        )
+        ->get();
+
+  return view('hospital.page.doctorPortal', compact('patients'));
+
     }
     public function update(Request $request)
     {

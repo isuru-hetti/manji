@@ -10,6 +10,10 @@ use App\Http\Controllers\Hospital\AdminPortalController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Doctor;
+use App\Models\DoctorSchedule;
+use App\Models\Appointment;
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     return view('hospital.page.home');
@@ -37,9 +41,28 @@ Route::get('/services', function () {
     return view('hospital.page.service');
 });
 Route::get('/doctors', function () {
-$doctors = User::where('role', 'doctor')->get();
+//  $doctors = User::whereHas('doctor')
+//         ->with(['doctor', 'doctorSchedule'])
+//         ->get();
+
+          $doctors = DB::table('users')
+        ->join('doctors', 'users.id', '=', 'doctors.user_id')
+        ->join('doctor_schedules', 'doctors.user_id', '=', 'doctor_schedules.doctor_id')
+        ->select(
+            'users.id as doctor_id',
+            'users.first_name',
+            'users.last_name',
+            'doctors.specialization',
+            'doctor_schedules.date',
+            'doctor_schedules.location',
+            'doctor_schedules.start_time',
+            'doctor_schedules.end_time'
+        )
+        ->get();
 
     return view('hospital.page.doctors', compact('doctors'));
+
+
 });
 // Route::get('/admin-portal', function () {
 //     return view('hospital.page.adminPortal');
@@ -57,7 +80,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::controller(DoctorController::class)->middleware(['auth', 'verified'])->group(function () {
-    // Route::get('/doctors', 'index')->name('doctors.index');
+     Route::get('/doctor-portal', 'index')->name('doctors.index');
     Route::post('/create-doctor', 'update')->name('users.index');
      Route::post('/update-doctor', 'updateDoctor')->name('update.doctor');
 

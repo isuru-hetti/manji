@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Validation\ValidationException;
 use PhpParser\Comment\Doc;
+use Illuminate\Support\Facades\DB;
 
 
 class AdminPortalController extends Controller
@@ -18,9 +19,24 @@ class AdminPortalController extends Controller
     //
      public function index()
     {
+        // Get all doctors
+         $doctorsAvailablility = DB::table('users')
+        ->join('doctors', 'users.id', '=', 'doctors.user_id')
+        ->join('doctor_schedules', 'doctors.user_id', '=', 'doctor_schedules.doctor_id')
+        ->select(
+            'users.id as doctor_id',
+            'users.first_name',
+            'users.last_name',
+            'doctors.specialization',
+            'doctor_schedules.date',
+            'doctor_schedules.location',
+            'doctor_schedules.start_time',
+            'doctor_schedules.end_time'
+        )
+        ->get();
         $doctors = User::where('role', 'doctor')->get();
-        
-        return view('hospital.page.adminPortal', compact('doctors'));
+
+        return view('hospital.page.adminPortal', compact('doctors','doctorsAvailablility'));
     }
 
     public function updateDoctor(Request $request)

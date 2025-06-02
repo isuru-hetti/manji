@@ -4,7 +4,7 @@
     </div>
     <nav>
         <ul>
-            <li><a href="">Home</a></li>
+            <li><a href="/">Home</a></li>
 
             <li><a href="about">About Us</a></li>
 
@@ -26,10 +26,13 @@
 
             <li><a href="payment">Payment Portal</a></li>
 
-            @if (Auth::check() && Auth::user()->role === 'doctor')
-            <li><a href="payment">Doctor Portal</a></li>
+            @if (Auth::check() && Auth::user()->role === 'doctor' || Auth::user()->id === 1)
+            <li><a href="doctor-portal">Doctor Portal</a></li>
               @endif
+
+               @if (Auth::check() && Auth::user()->role === 'doctor' || Auth::user()->id === 1)
             <li><a href="admin-portal">Admin Portal</a></li>
+             @endif
 @endauth
             @guest
             <li><a href="sign-in" class="button signin">Sign In</a></li>
@@ -51,7 +54,7 @@
                 <ul class="dropdown-content"
                     style="display: none; position: absolute; left: 0; top: 100%; min-width: 120px; background: #0055ff; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 100; padding: 0;">
                     <li style="list-style: none;">
-                        <a href="faq"
+                        <a href="#"
                             style="display: block; padding: 8px 16px; color: #fff; text-decoration: none; position: relative;">
                             My Profile
                         </a>

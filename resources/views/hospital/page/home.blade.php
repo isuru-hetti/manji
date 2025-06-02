@@ -6,7 +6,7 @@
     <section class="hero">
         <h2>Welcome To The Care Compass Hospitals</h2>
         <p>A Home For Your Health</p>
-        <a href="appointment.html" class="button">Book an Appointment</a>
+        <a href="appointment" class="button">Book an Appointment</a>
     </section>
 
     <!-- New Hospital Section -->

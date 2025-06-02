@@ -1,20 +1,62 @@
 @extends('hospital.master')
 @section('content')
-
+<br>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Add New Doctor
 </button>
-
-{{-- add doctor timetable --}}
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#doctorTimeModal">
-  Add New Time and Date for Doctor
-</button>
-
 {{-- update doctor profile --}}
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateDoctorModal">
   Update Doctor Profile
 </button>
+{{-- add doctor timetable --}}
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#doctorTimeModal">
+  Add New Schedule For Doctor
+</button>
+<br>
+<br> <h4>Doctors Availability Table</h4>
+ <table id="doctorTable">
+        <thead>
+            <tr>
+                <th>Doctor ID</th>
+                <th>Name</th>
+                <th>Specialty</th>
+                <th>Location</th>
+                <th>date</th>
+                <th>From time</th>
+                <th>To time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows of doctors (static or dynamically generated) -->
+            @foreach ($doctorsAvailablility as $doctor)
+
+            <tr>
+                <td>D{{$doctor->doctor_id}}</td>
+                <td>{{$doctor->first_name}} {{$doctor->last_name}}</td>
+                <td>{{$doctor->specialization}}</td>
+                <td>{{$doctor->location}}</td>
+                <td>{{$doctor->date}}</td>
+                <td>{{$doctor->start_time}}</td>
+                <td>{{$doctor->end_time}}</td>
+            </tr>
+            @endforeach
+
+            <tr>
+                <td>D000</td>
+                <td>Dr. Chandana Seneviratne</td>
+                <td>Neurology</td>
+                <td>2025/3/16</td>
+                <td>3.00 pm</td>
+                <td>10.00 am</td>
+                <td>10.00 am</td>
+
+            </tr>
+            <!-- Add as many rows as needed for demonstration -->
+        </tbody>
+    </table>
+
+
 
 
 

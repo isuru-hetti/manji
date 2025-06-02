@@ -18,6 +18,6 @@ class DoctorSchedule extends Model
     // relationships with user
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'doctor_id', 'id');
     }
 }
