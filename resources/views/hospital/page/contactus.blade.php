@@ -43,7 +43,8 @@
 
     <div class="contact-form">
         <h2>Get In Touch With Us</h2>
-        <form action="contactus.php" method="POST">
+        <form action="message-store" method="POST">
+            @csrf
             <div class="form-group">
                 <input type="text" name="name" placeholder="Enter Your Name" required>
                 <input type="email" name="email" placeholder="Enter Your Email" required>

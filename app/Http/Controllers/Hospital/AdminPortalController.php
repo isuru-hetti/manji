@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Doctor;
 use App\Models\DoctorSchedule;
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Validation\ValidationException;
@@ -36,7 +37,10 @@ class AdminPortalController extends Controller
         ->get();
         $doctors = User::where('role', 'doctor')->get();
 
-        return view('hospital.page.adminPortal', compact('doctors','doctorsAvailablility'));
+        $messages =  Message::all();
+
+
+        return view('hospital.page.adminPortal', compact('doctors','doctorsAvailablility','messages'));
     }
 
     public function updateDoctor(Request $request)

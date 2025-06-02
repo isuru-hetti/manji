@@ -24,7 +24,7 @@
 
             <li><a href="appointment">Appointments</a></li>
 
-            <li><a href="payment">Payment Portal</a></li>
+            {{-- <li><a href="payment">Payment Portal</a></li> --}}
 
             @if (Auth::check() && Auth::user()->role === 'doctor' || Auth::user()->id === 1)
             <li><a href="doctor-portal">Doctor Portal</a></li>

@@ -7,6 +7,7 @@ use PhpParser\Comment\Doc;
 use App\Http\Controllers\Hospital\DoctorController;
 use App\Http\Controllers\Hospital\AppointmentController;
 use App\Http\Controllers\Hospital\AdminPortalController;
+use App\Http\Controllers\Hospital\MessageController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -96,6 +97,14 @@ Route::controller(AdminPortalController::class)->middleware(['auth', 'verified']
     Route::get('/admin-portal', 'index')->name('admin-portal.index');
     Route::post('/update-doctor', 'updateDoctor')->name('update.doctor');
     Route::post('/doctor-schedule-create', 'doctorSchedule')->name('update.doctor');
+
+
+});
+
+Route::controller(MessageController::class)->group(function () {
+
+    Route::post('/message-store', 'store')->name('message.store');
+
 
 
 });

@@ -56,6 +56,49 @@
         </tbody>
     </table>
 
+<br>
+<br> <h4>Messages</h4>
+<table id="doctorTable">
+        <thead>
+            <tr>
+                <th> ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Subject</th>
+                <th>Message</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows of doctors (static or dynamically generated) -->
+            @foreach ($messages as $message)
+
+            <tr>
+                <td>D{{$message->id}}</td>
+                <td>{{$message->name}} </td>
+                <td>{{$message->email}}</td>
+                <td>{{$message->phone}}</td>
+                <td>{{$message->subject}}</td>
+                <td>{{$message->message}}</td>
+
+            </tr>
+            @endforeach
+
+            <tr>
+                <td>D000</td>
+                <td>Dr. Chandana Seneviratne</td>
+                <td>Neurology</td>
+                <td>2025/3/16</td>
+                <td>3.00 pm</td>
+                <td>10.00 am</td>
+                <td>10.00 am</td>
+
+            </tr>
+            <!-- Add as many rows as needed for demonstration -->
+        </tbody>
+    </table>
+
 
 
 
