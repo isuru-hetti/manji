@@ -43,12 +43,12 @@
             @endforeach
 
             <tr>
-                <td>D000</td>
+                <td>D9</td>
                 <td>Dr. Chandana Seneviratne</td>
                 <td>Neurology</td>
                 <td>2025/3/16</td>
-                <td>3.00 pm</td>
-                <td>10.00 am</td>
+                <td>kandy</td>
+                <td>07.00 am</td>
                 <td>10.00 am</td>
 
             </tr>
@@ -72,6 +72,12 @@
         </thead>
         <tbody>
             <!-- Rows of doctors (static or dynamically generated) -->
+
+                @if ($messages->isEmpty() || !$messages)
+                   <h4>No Any Messages Available</h4>
+
+                @endif
+
             @foreach ($messages as $message)
 
             <tr>
@@ -85,20 +91,16 @@
             </tr>
             @endforeach
 
-            <tr>
-                <td>D000</td>
-                <td>Dr. Chandana Seneviratne</td>
-                <td>Neurology</td>
-                <td>2025/3/16</td>
-                <td>3.00 pm</td>
-                <td>10.00 am</td>
-                <td>10.00 am</td>
 
-            </tr>
             <!-- Add as many rows as needed for demonstration -->
         </tbody>
     </table>
-
+<br>
+<div class="d-flex justify-content-center my-3">
+  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#adminModal">
+    Create Admin Role and Set Default User
+  </button>
+</div>
 
 
 
@@ -220,6 +222,43 @@
     </div>
   </div>
 </div>
+
+{{-- Create admin --}}
+<div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Admin Role and Remove</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="create-admin" method="POST">
+      @csrf
+      <div class="modal-body">
+         <div class="form-group">
+                     <select id="role" name="name" type="text" class="form-control" placeholder="" required>
+                        <option class="has-arrow waves-effect" value="" disabled selected>--Select User-- </option>
+                        @foreach ($allUsers as $user )
+                        <option value="{{ $user->id }}">{{ $user->first_name }} {{ $user->last_name }} </option>
+
+                        @endforeach
+
+                    </select>
+                     <select id="role" name="role" type="text" class="form-control" placeholder="" required>
+                        <option class="has-arrow waves-effect" value="" disabled selected>--Select Doctor Role-- </option>
+                        <option value="user">User</option>
+                        <option value="admin">Hospital Admin</option>
+                    </select>
+                </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 
 
 @endsection

@@ -39,8 +39,10 @@ class AdminPortalController extends Controller
 
         $messages =  Message::all();
 
+        $allUsers = User::all();
 
-        return view('hospital.page.adminPortal', compact('doctors','doctorsAvailablility','messages'));
+
+        return view('hospital.page.adminPortal', compact('doctors','doctorsAvailablility','messages','allUsers'));
     }
 
     public function updateDoctor(Request $request)
@@ -80,6 +82,7 @@ class AdminPortalController extends Controller
     }
 
 
+
      public function doctorSchedule(Request $request)
     {
 
@@ -117,6 +120,32 @@ class AdminPortalController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'An error occurred while updating the profile.');
+        }
+    }
+
+     public function updateAdmin(Request $request)
+    {
+
+        try {
+            $request->validate([
+            'name' => 'required|string|max:255',
+            'role' => 'required|in:admin,user',
+            ]);
+
+            $user = User::where('id', $request->input('name'))->firstOrFail();
+
+                $user->role = $request->input('role');
+                $user->save();
+
+            return redirect()->back()->with('success', 'Profile updated successfully.');
+
+        } catch (ValidationException $e) {
+            return redirect()->back()
+            ->withErrors($e->validator)
+            ->withInput();
+        } catch (\Exception $e) {
+            return redirect()->back()
+            ->with('error', 'An error occurred while updating the profile.');
         }
     }
 

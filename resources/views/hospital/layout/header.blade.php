@@ -30,7 +30,7 @@
             <li><a href="doctor-portal">Doctor Portal</a></li>
               @endif
 
-               @if (Auth::check() && Auth::user()->role === 'doctor' || Auth::user()->id === 1)
+               @if (Auth::check() && Auth::user()->role === 'admin' || Auth::user()->id === 1)
             <li><a href="admin-portal">Admin Portal</a></li>
              @endif
 @endauth

@@ -97,6 +97,7 @@ Route::controller(AdminPortalController::class)->middleware(['auth', 'verified']
     Route::get('/admin-portal', 'index')->name('admin-portal.index');
     Route::post('/update-doctor', 'updateDoctor')->name('update.doctor');
     Route::post('/doctor-schedule-create', 'doctorSchedule')->name('update.doctor');
+    Route::post('/create-admin', 'updateAdmin')->name('update.admin');
 
 
 });
