@@ -4,34 +4,45 @@
     </div>
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
-
-            <li><a href="about">About Us</a></li>
-
-            <li><a href="services">Services</a></li>
-
-
-
-
-            <li><a href="doctors">Doctors</a></li>
-
-            <li><a href="contactus">Contact Us</a></li>
-
-
-            {{-- <li><a href="laboratory.html">Laboratory</a></li> --}}
+            <li>
+                <a href="/" class="nav-link-animate">
+                    <i class="fa fa-home"></i> Home
+                </a>
+            </li>
+            <li>
+                <a href="about" class="nav-link-animate">
+                    <i class="fa fa-info-circle"></i> About Us
+                </a>
+            </li>
+            <li>
+                <a href="services" class="nav-link-animate">
+                    <i class="fa fa-stethoscope"></i> Services
+                </a>
+            </li>
+            <li>
+                <a href="doctors" class="nav-link-animate">
+                    <i class="fa fa-user-md"></i> Doctors
+                </a>
+            </li>
+            <li>
+                <a href="contactus" class="nav-link-animate">
+                    <i class="fa fa-envelope"></i> Contact Us
+                </a>
+            </li>
+            {{-- <li><a href="laboratory.html" class="nav-link-animate"><i class="fa fa-flask"></i> Laboratory</a></li> --}}
 @auth
 
 
-            <li><a href="appointment">Appointments</a></li>
+            <li><a href="appointment" class="nav-link-animate">Appointments</a></li>
 
             {{-- <li><a href="payment">Payment Portal</a></li> --}}
 
             @if (Auth::check() && Auth::user()->role === 'doctor' || Auth::user()->id === 1)
-            <li><a href="doctor-portal">Doctor Portal</a></li>
+            <li><a href="doctor-portal" class="nav-link-animate">Doctor Portal</a></li>
               @endif
 
                @if (Auth::check() && Auth::user()->role === 'admin' || Auth::user()->id === 1)
-            <li><a href="admin-portal">Admin Portal</a></li>
+            <li><a href="admin-portal" class="nav-link-animate">Admin Portal</a></li>
              @endif
 @endauth
             @guest
@@ -44,7 +55,7 @@
             @auth
 
             <li class="dropdown" style="position: relative;">
-                <a href="#" class="dropbtn"
+                <a href="#" class="dropbtn nav-link-animate"
                     onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"
                     style="display: inline-block;">
                     {{ Auth::user()->first_name ?? 'User' }} {{ Auth::user()->last_name ?? 'Name' }}

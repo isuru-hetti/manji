@@ -46,8 +46,8 @@
                 <td>D9</td>
                 <td>Dr. Chandana Seneviratne</td>
                 <td>Neurology</td>
-                <td>2025/3/16</td>
                 <td>kandy</td>
+                <td>2025/3/16</td>
                 <td>07.00 am</td>
                 <td>10.00 am</td>
 

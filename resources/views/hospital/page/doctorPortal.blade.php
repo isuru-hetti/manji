@@ -32,8 +32,8 @@
             @endforeach
 
             <tr>
-                <td>D000</td>
-                <td>Dr. Chandana Seneviratne</td>
+                <td>D9</td>
+                <td>Mr. Chandana Seneviratne</td>
                 <td>kandy</td>
                 <td>2025/3/16</td>
                 <td>3.00 pm</td>

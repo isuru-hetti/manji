@@ -82,9 +82,9 @@ nav ul li a {
     border-radius: 5px;
 }
 
-nav ul li a:hover {
+/* nav ul li a:hover {
     background-color: #004aad;
-}
+} */
 
 .button {
     padding: 8px 15px;
