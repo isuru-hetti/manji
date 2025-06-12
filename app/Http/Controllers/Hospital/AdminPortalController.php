@@ -13,6 +13,8 @@ use Illuminate\Auth\Events\Validated;
 use Illuminate\Validation\ValidationException;
 use PhpParser\Comment\Doc;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class AdminPortalController extends Controller
@@ -43,6 +45,59 @@ class AdminPortalController extends Controller
 
 
         return view('hospital.page.adminPortal', compact('doctors','doctorsAvailablility','messages','allUsers'));
+    }
+
+    public function appointmentView(){
+        $appointments = DB::table('appointments')
+            ->join('users', 'appointments.user_id', '=', 'users.id')
+            ->join('doctors', 'appointments.doctor_id', '=', 'doctors.user_id')
+            ->select(
+                'appointments.id as appointment_id',
+                'appointments.location as hospital_location',
+                'users.first_name as patient_first_name',
+                'users.last_name as patient_last_name',
+                'doctors.specialization as doctor_specialization',
+                'appointments.date as appointment_date',
+                'appointments.time as appointment_time',
+                'appointments.status as status'
+            )
+            ->get();
+        return view('hospital.page.allAppointments', compact('appointments'));
+    }
+
+
+    public function printReceipt($appointment_id)
+    {
+        // Retrieve the appointment details
+        $appointment = DB::table('appointments')
+            ->join('users', 'appointments.user_id', '=', 'users.id')
+            ->join('doctors', 'appointments.doctor_id', '=', 'doctors.user_id')
+            ->select(
+                'appointments.id as appointment_id',
+                'appointments.location as hospital_location',
+                'users.first_name as patient_first_name',
+                'users.last_name as patient_last_name',
+                'users.contact_no as patient_contact_no',
+                'users.date_of_birth as patient_dob',
+                'doctors.specialization as doctor_specialization',
+                'doctors.user_id as doctor_id',
+                'appointments.date as appointment_date',
+                'appointments.time as appointment_time',
+
+            )
+            ->where('appointments.id', $appointment_id)
+            ->first();
+            $doctor = User::where('id', $appointment->doctor_id)->first();
+            $patientAge = Carbon::parse($appointment->patient_dob)->age;
+
+        if (!$appointment) {
+            return redirect()->back()->with('error', 'Appointment not found.');
+        }
+        $pdf = pdf::loadView('hospital.receiptPdf', compact('appointment', 'doctor', 'patientAge'));
+        return $pdf->stream('receipt.pdf');
+       //return view('hospital.receiptPdf', compact('appointment', 'doctor', 'patientAge'));
+
+
     }
 
     public function updateDoctor(Request $request)

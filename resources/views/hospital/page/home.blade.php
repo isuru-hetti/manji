@@ -78,7 +78,7 @@
 
     <!-- Our Services Section -->
 
-    <section class="services-container paragraph">
+    <section class="services-container-paragraph">
         <p>State of the art Hospital with most reliable & caring service</p>
     </section>
 

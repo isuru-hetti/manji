@@ -38,14 +38,11 @@ Route::get('/contactus', function () {
 Route::get('/payment', function () {
     return view('hospital.page.payment');
 });
-Route::get('/services', function () {
-    return view('hospital.page.service');
+Route::get('/pdf', function () {
+    return view('hospital.receiptPdf');
 });
-Route::get('/doctors', function () {
-//  $doctors = User::whereHas('doctor')
-//         ->with(['doctor', 'doctorSchedule'])
-//         ->get();
 
+Route::get('/doctors', function () {
           $doctors = DB::table('users')
         ->join('doctors', 'users.id', '=', 'doctors.user_id')
         ->join('doctor_schedules', 'doctors.user_id', '=', 'doctor_schedules.doctor_id')
@@ -94,11 +91,12 @@ Route::controller(AppointmentController::class)->middleware(['auth', 'verified']
 });
 
 Route::controller(AdminPortalController::class)->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/appointment-admin', 'appointmentView')->name('admin-portal-appointment.index');
     Route::get('/admin-portal', 'index')->name('admin-portal.index');
     Route::post('/update-doctor', 'updateDoctor')->name('update.doctor');
     Route::post('/doctor-schedule-create', 'doctorSchedule')->name('update.doctor');
     Route::post('/create-admin', 'updateAdmin')->name('update.admin');
-
+    Route::get('/print-receipt-{appointment_id}', 'printReceipt')->name('print.receipt');
 
 });
 

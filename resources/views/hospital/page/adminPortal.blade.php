@@ -2,19 +2,24 @@
 @section('content')
 <br>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-primary nav-link-animate" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Add New Doctor
 </button>
 {{-- update doctor profile --}}
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateDoctorModal">
+<button type="button" class="btn btn-primary nav-link-animate" data-bs-toggle="modal" data-bs-target="#updateDoctorModal">
   Update Doctor Profile
 </button>
 {{-- add doctor timetable --}}
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#doctorTimeModal">
+<button type="button" class="btn btn-primary nav-link-animate" data-bs-toggle="modal" data-bs-target="#doctorTimeModal">
   Add New Schedule For Doctor
 </button>
+
+     <a href="appointment-admin" class="btn btn-success nav-link-animate">
+      <i class="fa fa-home"></i> View Appointments
+     </a>
+
 <br>
-<br> <h4>Doctors Availability Table</h4>
+<br> <h4>Doctors Availability Time Table</h4>
  <table id="doctorTable">
         <thead>
             <tr>
@@ -25,6 +30,7 @@
                 <th>date</th>
                 <th>From time</th>
                 <th>To time</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -39,12 +45,13 @@
                 <td>{{$doctor->date}}</td>
                 <td>{{$doctor->start_time}}</td>
                 <td>{{$doctor->end_time}}</td>
+                <td><a href="/{{$doctor->doctor_id}}"><i class="btn btn-danger btn-sm">Delete </i></a></td>
             </tr>
             @endforeach
 
             <tr>
                 <td>D9</td>
-                <td>Dr. Chandana Seneviratne</td>
+                <td>Dr. Mano Dulmini</td>
                 <td>Neurology</td>
                 <td>kandy</td>
                 <td>2025/3/16</td>
@@ -67,6 +74,7 @@
                 <th>Phone Number</th>
                 <th>Subject</th>
                 <th>Message</th>
+                <th>Delete</th>
 
             </tr>
         </thead>
