@@ -9,6 +9,7 @@ use App\Models\Doctor;
 use App\Models\DoctorSchedule;
 use App\Models\Message;
 use App\Models\User;
+use App\Models\Appointment;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Validation\ValidationException;
 use PhpParser\Comment\Doc;
@@ -31,6 +32,7 @@ class AdminPortalController extends Controller
             'users.first_name',
             'users.last_name',
             'doctors.specialization',
+            'doctor_schedules.id as schedule_id',
             'doctor_schedules.date',
             'doctor_schedules.location',
             'doctor_schedules.start_time',
@@ -204,5 +206,37 @@ class AdminPortalController extends Controller
         }
     }
 
+    public function deleteSchedule ($id)
+    {
+        $schedule = DoctorSchedule::find($id);
+        if ($schedule) {
+            $schedule->delete();
+            return redirect()->back()->with('success', 'Schedule deleted successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Schedule not found.');
+        }
+    }
 
+    public function deleteAppointment($id)
+    {
+        $appointment = Appointment::find($id);
+        if ($appointment) {
+            DB::table('appointments')->where('id', $id)->delete();
+            return redirect()->back()->with('success', 'Appointment deleted successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Appointment not found.');
+        }
+    }
+
+    public function updateAppointmentStatus($id)
+    {
+        $appointment = Appointment::find($id);
+        if ($appointment) {
+            $appointment->status = true; // Assuming 'status' is passed in the request
+            $appointment->save();
+            return redirect()->back()->with('success', 'Appointment status updated successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Appointment not found.');
+        }
+    }
 }

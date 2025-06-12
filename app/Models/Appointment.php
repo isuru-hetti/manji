@@ -8,6 +8,7 @@ class Appointment extends Model
 {
     //
     protected $fillable = [
+        'id',
         'user_id',
         'doctor_id',
         'date',

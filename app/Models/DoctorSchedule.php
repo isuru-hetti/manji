@@ -8,6 +8,8 @@ class DoctorSchedule extends Model
 {
     //
     protected$fillable = [
+        'id',
+        'doctor_id',
         'user_id',
         'location',
         'date',

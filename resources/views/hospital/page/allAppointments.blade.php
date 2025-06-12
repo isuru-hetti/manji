@@ -23,6 +23,7 @@
                 <th>time</th>
                 <th>status</th>
                 <th>Receipt</th>
+                <th>Delete</th>
 
             </tr>
         </thead>
@@ -43,21 +44,17 @@
                         Print PDF
                     </a>
                 </td>
-
+              <td>
+                <a href="/delete-appointment-{{$appointment->appointment_id}}" class="btn btn-danger btn-sm w-100 mb-1">Delete</a>
+                <form action="update-appointment-status-{{$appointment->appointment_id}}" method="POST">
+                 @csrf
+                    <button type="submit" class="btn btn-success btn-sm w-100">Checked</button>
+                </form>
+          </td>
             </tr>
             @endforeach
 
-            <tr>
-                <td>D9</td>
-                <td>Mr. Chandana Seneviratne</td>
-                <td>kandy</td>
-                <td>2025/3/16</td>
-                <td>3.00 pm</td>
-                <td><div class="badge bg-danger">pending </div></td>
-                <td>Print</td>
 
-
-            </tr>
             <!-- Add as many rows as needed for demonstration -->
         </tbody>
     </table>

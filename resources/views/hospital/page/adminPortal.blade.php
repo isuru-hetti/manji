@@ -13,6 +13,7 @@
 <button type="button" class="btn btn-primary nav-link-animate" data-bs-toggle="modal" data-bs-target="#doctorTimeModal">
   Add New Schedule For Doctor
 </button>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
      <a href="appointment-admin" class="btn btn-success nav-link-animate">
       <i class="fa fa-home"></i> View Appointments
@@ -45,7 +46,7 @@
                 <td>{{$doctor->date}}</td>
                 <td>{{$doctor->start_time}}</td>
                 <td>{{$doctor->end_time}}</td>
-                <td><a href="/{{$doctor->doctor_id}}"><i class="btn btn-danger btn-sm">Delete </i></a></td>
+                <td><a href="/delete-doctor-schedule-{{$doctor->schedule_id}}"><i class="btn btn-danger btn-sm">Delete </i></a></td>
             </tr>
             @endforeach
 
@@ -57,6 +58,7 @@
                 <td>2025/3/16</td>
                 <td>07.00 am</td>
                 <td>10.00 am</td>
+                <td><a href=""><i class="btn btn-danger btn-sm">Delete </i></a></td>
 
             </tr>
             <!-- Add as many rows as needed for demonstration -->
@@ -95,6 +97,8 @@
                 <td>{{$message->phone}}</td>
                 <td>{{$message->subject}}</td>
                 <td>{{$message->message}}</td>
+                <td><a href="/delete-message-{{$message->id}}"><i class="btn btn-danger btn-sm">Delete </i></a></td>
+
 
             </tr>
             @endforeach
@@ -123,6 +127,9 @@
         <h5 class="modal-title" id="exampleModalLabel">Create New Doctor</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <br>
+      <p><strong>before update user role to doctor, first should be registered as a user <br>
+      enter correct user email here</strong></p>
       <form action="create-doctor" method="POST">
       @csrf
       <div class="modal-body">

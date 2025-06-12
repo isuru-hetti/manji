@@ -97,12 +97,16 @@ Route::controller(AdminPortalController::class)->middleware(['auth', 'verified']
     Route::post('/doctor-schedule-create', 'doctorSchedule')->name('update.doctor');
     Route::post('/create-admin', 'updateAdmin')->name('update.admin');
     Route::get('/print-receipt-{appointment_id}', 'printReceipt')->name('print.receipt');
+    Route::get('/delete-doctor-schedule-{schedule_id}', 'deleteSchedule')->name('delete.doctor.schedule');
+    Route::get('/delete-appointment-{appointment_id}', 'deleteAppointment')->name('delete.appointment');
+    Route::post('/update-appointment-status-{appointment_id}', 'updateAppointmentStatus')->name('update.appointment.status');
 
 });
 
 Route::controller(MessageController::class)->group(function () {
 
     Route::post('/message-store', 'store')->name('message.store');
+    Route::get('/delete-message-{message_id}', 'deleteMessage')->name('delete.message');
 
 
 

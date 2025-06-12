@@ -52,9 +52,10 @@
     <!-- Header -->
     <div class="header">
         <h2>Manjikki Hospital</h2>
-        <p>No.123, Angry Street, Kandy</p>
+        <p>No.123, Rose Street, Kandy</p>
         <p>Hotline: +94 76 373 3737</p>
         <p><em>"Caring Hands, Healing Hearts"</em></p>
+        <p><strong><u>MEDICAL RECEIPT</u></strong></p>
         <hr>
     </div>
 

@@ -83,5 +83,9 @@ class DoctorController extends Controller
         }
     }
 
+    public function deleteSchedule($h){
+        
+    }
+
 
 }
